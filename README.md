@@ -15,7 +15,7 @@ Next.js landing site for the Bexhearts pre-launch waitlist.
 Copy `.env.example` to `.env.local` and set:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://bexhearts.app
+NEXT_PUBLIC_SITE_URL=https://bexhearts.com
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
