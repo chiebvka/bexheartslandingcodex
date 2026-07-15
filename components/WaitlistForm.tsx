@@ -39,10 +39,11 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus('loading');
     setMessage('');
 
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formElement);
     const payload = {
       email: String(form.get('email') || '').trim(),
       name: String(form.get('name') || '').trim(),
@@ -65,7 +66,7 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
 
       setStatus('success');
       setMessage(data.message || '');
-      event.currentTarget.reset();
+      formElement.reset();
     } catch (error) {
       setStatus('error');
       setMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
