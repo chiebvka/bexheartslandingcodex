@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -75,7 +75,11 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
 
   if (status === 'success') {
     return (
-      <div className={compact ? 'waitlist-success compact' : 'waitlist-success'} role="status">
+      <div
+        className={compact ? 'waitlist-toast success compact' : 'waitlist-toast success'}
+        role="status"
+        aria-live="polite"
+      >
         <CheckCircle2 aria-hidden="true" />
         <span>{successText}</span>
       </div>
@@ -126,9 +130,10 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
         <ArrowRight aria-hidden="true" />
       </button>
       {status === 'error' && (
-        <p className="form-message error" role="alert">
-          {message}
-        </p>
+        <div className="waitlist-toast error" role="alert" aria-live="assertive">
+          <AlertCircle aria-hidden="true" />
+          <span>{message}</span>
+        </div>
       )}
     </form>
   );

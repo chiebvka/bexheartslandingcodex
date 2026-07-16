@@ -1,14 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { getWaitlistClient, type WaitlistInsert } from '@/lib/supabase/waitlist';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const allowedStages = new Set(['dating', 'engaged', 'newlywed', 'married', '']);
+const ipLimit = { limit: 8, windowMs: 10 * 60 * 1000 };
+const emailLimit = { limit: 3, windowMs: 60 * 60 * 1000 };
+
+export const runtime = 'nodejs';
 
 function clean(value: unknown) {
   return typeof value === 'string' ? value.trim().slice(0, 500) : '';
 }
 
+function rateLimitResponse(retryAfter: number) {
+  return NextResponse.json(
+    { ok: false, message: 'Too many waitlist attempts. Please wait a few minutes and try again.' },
+    { status: 429, headers: { 'Retry-After': String(retryAfter) } },
+  );
+}
+
 export async function POST(request: NextRequest) {
+  const clientIp = getClientIp(request);
+  const ipCheck = checkRateLimit({
+    key: `waitlist:ip:${clientIp}`,
+    ...ipLimit,
+  });
+
+  if (ipCheck.limited) {
+    return rateLimitResponse(ipCheck.retryAfter);
+  }
   const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
 
   if (!body) {
@@ -24,6 +45,15 @@ export async function POST(request: NextRequest) {
 
   if (!emailPattern.test(email)) {
     return NextResponse.json({ ok: false, message: 'Enter a valid email address.' }, { status: 400 });
+  }
+
+  const emailCheck = checkRateLimit({
+    key: `waitlist:email:${email}`,
+    ...emailLimit,
+  });
+
+  if (emailCheck.limited) {
+    return rateLimitResponse(emailCheck.retryAfter);
   }
 
   if (!allowedStages.has(stage)) {
