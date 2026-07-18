@@ -16,9 +16,10 @@ type WaitlistInsert = {
 
 export function getWaitlistClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  const key = serviceRoleKey || anonKey;
+  // Service-role only, on purpose: inserts must go through this server route so
+  // its rate limiting applies. The table has no anon policies (see
+  // supabase/waitlist_rls_fix.sql), so the anon key would not work anyway.
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !key) {
     return null;

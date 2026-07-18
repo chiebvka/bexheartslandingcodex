@@ -1081,3 +1081,42 @@ select {
     gap: 8px;
   }
 }
+
+/* Partner-invite page */
+.invite-code-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2rem;
+  padding: 28px 20px;
+  border: 1px solid var(--border, #dad7d0);
+  background: var(--surface, #fefcf7);
+  text-align: center;
+}
+
+.invite-code-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, #6d6879);
+}
+
+.invite-code {
+  font-size: clamp(30px, 7vw, 44px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--purple, #9849fa);
+  font-variant-numeric: tabular-nums;
+}
+
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 1.5rem;
+}
+
+.store-links .primary-button {
+  text-decoration: none;
+}

@@ -17,13 +17,11 @@ create table if not exists public.waitlist_signups (
 
 alter table public.waitlist_signups enable row level security;
 
--- If the landing API uses SUPABASE_SERVICE_ROLE_KEY, no public insert policy is needed.
--- Use this policy only if you intentionally want anon-key inserts from the server route.
-create policy "Allow anon waitlist inserts"
-  on public.waitlist_signups
-  for insert
-  to anon
-  with check (true);
+-- The landing API uses SUPABASE_SERVICE_ROLE_KEY (bypasses RLS), so no
+-- policies are needed at all. Deliberately none are created: an anon INSERT
+-- policy would let anyone with the public anon key bypass the API route's
+-- rate limiting. If you ran an older version of this file that created
+-- "Allow anon waitlist inserts", run waitlist_rls_fix.sql to drop it.
 
 create index if not exists waitlist_signups_created_at_idx
   on public.waitlist_signups (created_at desc);

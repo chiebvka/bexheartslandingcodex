@@ -60,6 +60,11 @@ const faqs = [
       'Daily devotionals you complete together, shared and personal prayer journals with an optional AI-composed prayer for focused prayer sessions, weekly check-ins with a partner reveal, boundaries and temptation plans, a library of 350+ date ideas rated by other couples, and a couple journal of photos, moments, and milestones — held together by a couple streak.',
   },
   {
+    question: 'How does the couple streak work?',
+    answer:
+      'Your streak grows on days you both finish the daily devotional — it is one shared flame, not two scores. Miss a single day and a weekly grace day keeps it alive; the day boundary follows your own timezone. Points come from things you already do (devotionals, prayer, check-ins, dates, journal moments) and land in one shared couple total. The full breakdown lives on the How it works page.',
+  },
+  {
     question: 'When will it launch?',
     answer:
       'The app is in pre-launch work now. The waitlist is for early access and launch updates once the first public build is ready.',
@@ -230,6 +235,9 @@ export default function HomePage() {
                 scripture, prayer, honest reflection, and small actions that keep connection from
                 becoming accidental.
               </p>
+              <Link className="text-link" href="/how-it-works">
+                See how streaks, points, and rewards work <ArrowRight aria-hidden="true" />
+              </Link>
             </div>
             <div className="rhythm-list">
               {productRhythm.map((item) => (

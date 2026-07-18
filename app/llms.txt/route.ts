@@ -13,6 +13,7 @@ ${siteConfig.description}
 
 ## Primary Pages
 - Homepage: ${siteConfig.url}/
+- How it works (streaks, points, rewards): ${siteConfig.url}/how-it-works
 - Blog: ${siteConfig.url}/blog
 - Privacy Policy: ${siteConfig.url}/privacy
 - Terms of Service: ${siteConfig.url}/terms

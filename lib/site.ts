@@ -20,6 +20,13 @@ export const siteConfig = {
   ],
 };
 
+// Fill these in when the store listings go live; the invite page shows
+// download buttons automatically once either URL is non-empty.
+export const appLinks = {
+  appStore: '',
+  playStore: '',
+};
+
 export const stageCards = [
   {
     label: 'Dating',
