@@ -1,17 +1,9 @@
-export type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  category: 'Dating' | 'Engaged' | 'Newlywed' | 'Prayer' | 'Dates';
-  publishedAt: string;
-  readingMinutes: number;
-  content: Array<{
-    heading?: string;
-    paragraphs: string[];
-  }>;
-};
+import { featureGuides } from './feature-guides';
+import type { BlogPost } from './types';
 
-export const blogPosts: BlogPost[] = [
+export type { BlogPost } from './types';
+
+const foundationalPosts: BlogPost[] = [
   {
     slug: 'pray-before-you-react-couples-conflict',
     title: 'Pray Before You React: A 60-Second Habit for Couples in Conflict',
@@ -378,6 +370,10 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+export const blogPosts: BlogPost[] = [...featureGuides, ...foundationalPosts].sort((a, b) =>
+  b.publishedAt.localeCompare(a.publishedAt)
+);
 
 export function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
