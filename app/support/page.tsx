@@ -26,7 +26,7 @@ export default function SupportPage() {
           <p className="section-kicker">Support</p>
           <h1>Need help with Bexhearts?</h1>
           <p>
-            For launch access, account, privacy, or product questions, email{' '}
+            For waitlist access, account, privacy, or product questions, email{' '}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
         </div>
@@ -34,4 +34,3 @@ export default function SupportPage() {
     </main>
   );
 }
-

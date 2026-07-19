@@ -286,7 +286,7 @@ export const blogPosts: BlogPost[] = [
         heading: 'Let the habit stay ordinary',
         paragraphs: [
           'Prayer together does not need candles, a perfect mood, or a long devotional setup every night. It can happen before a drive, after dinner, or right before sleep.',
-          'Bexhearts is being built around that kind of ordinary faithfulness: small shared practices that couples can actually return to.',
+          'Bexhearts gives couples a practical place for that kind of faithfulness: a daily devotional, shared prayer, honest check-ins, and small actions they can repeat.',
         ],
       },
     ],
@@ -382,4 +382,3 @@ export const blogPosts: BlogPost[] = [
 export function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
-

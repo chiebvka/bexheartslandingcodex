@@ -29,7 +29,7 @@ const features = [
   {
     icon: MessageCircle,
     title: 'Weekly check-ins',
-    copy: 'Talk about connection, spiritual rhythm, and communication before distance builds.',
+    copy: 'Talk about connection, faith, and communication before distance builds.',
   },
   {
     icon: CalendarDays,
@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'Is Bexhearts only for married couples?',
     answer:
-      'No. The first audience is Christian dating, engaged, and newlywed couples. Married couples can use it too, but the early messaging is built around those first seasons.',
+      'No. Bexhearts serves Christian dating, engaged, newlywed, and married couples, with focused guidance for the dating-to-newlywed seasons.',
   },
   {
     question: 'Is this counseling or pastoral advice?',
@@ -65,9 +65,9 @@ const faqs = [
       'Your streak grows on days you both finish the daily devotional — it is one shared flame, not two scores. Miss a single day and a weekly grace day keeps it alive; the day boundary follows your own timezone. Points come from things you already do (devotionals, prayer, check-ins, dates, journal moments) and land in one shared couple total. The full breakdown lives on the How it works page.',
   },
   {
-    question: 'When will it launch?',
+    question: 'When can I download Bexhearts?',
     answer:
-      'The app is in pre-launch work now. The waitlist is for early access and launch updates once the first public build is ready.',
+      'Bexhearts is ready, and the iPhone release is awaiting App Store review. Join the waitlist and we will email you as soon as the approved download link is available.',
   },
 ];
 
@@ -134,15 +134,14 @@ export default function HomePage() {
             </div>
             <h1>Grow closer to God and each other.</h1>
             <p className="hero-subcopy">
-              Bexhearts helps couples build a shared rhythm of devotionals, prayer, weekly
-              check-ins, intentional dates, and remembered moments.
+              Bexhearts is a Christian couples app for daily devotionals, shared prayer, honest
+              weekly check-ins, intentional dates, and a private journal you create together.
             </p>
             <div id="waitlist" className="hero-form" aria-label="Join the Bexhearts waitlist">
               <WaitlistForm />
             </div>
             <p className="microcopy">
-              Early access list only. No spam. Launch emails will use waitlist wording until the
-              app-store links are live.
+              The iPhone app is awaiting App Store approval. Join for the download link — no spam.
             </p>
           </div>
 
@@ -228,12 +227,11 @@ export default function HomePage() {
         <section id="how-it-works" className="split-section">
           <div className="section-shell split-grid">
             <div>
-              <p className="section-kicker">The daily rhythm</p>
-              <h2 className="section-title">Not another chat app. A shared practice.</h2>
+              <p className="section-kicker">A daily practice</p>
+              <h2 className="section-title">Not another chat app. A place to follow through together.</h2>
               <p className="section-copy">
-                Couples rarely need more noise. They need a simple rhythm they can return to:
-                scripture, prayer, honest reflection, and small actions that keep connection from
-                becoming accidental.
+                Read the same scripture, pray for what is happening now, answer the weekly
+                check-in, and choose a small action that keeps you connected beyond the screen.
               </p>
               <Link className="text-link" href="/how-it-works">
                 See how streaks, points, and rewards work <ArrowRight aria-hidden="true" />
@@ -255,11 +253,11 @@ export default function HomePage() {
 
         <section id="stages" className="stage-section section-shell">
           <div className="section-heading">
-            <p className="section-kicker">Built around your season</p>
+            <p className="section-kicker">For your season</p>
             <h2 className="section-title">Dating, engaged, and newlywed couples need different prompts.</h2>
             <p className="section-copy">
-              The first version is focused on couples who are forming rhythms early, preparing for
-              marriage, or learning what faithfulness looks like at home.
+              Bexhearts adapts to couples putting faith at the center, preparing for marriage, or
+              learning how to stay connected in the first years at home.
             </p>
           </div>
           <div className="stage-grid">
@@ -297,8 +295,8 @@ export default function HomePage() {
               </div>
               <div className="proof-card">
                 <Sparkles aria-hidden="true" />
-                <h3>Built to be kept</h3>
-                <p>Streaks, points, and a couple journal turn small faithful habits into your story.</p>
+                <h3>Keep the history you are making</h3>
+                <p>Your journal brings dates, milestones, photos, and answered prayers together.</p>
               </div>
             </div>
           </div>
@@ -307,8 +305,8 @@ export default function HomePage() {
         <section className="blog-preview section-shell">
           <div className="section-heading horizontal">
             <div>
-              <p className="section-kicker">Search-ready content</p>
-              <h2 className="section-title">Guides for the questions couples already search.</h2>
+              <p className="section-kicker">Relationship guides</p>
+              <h2 className="section-title">Clear help for faith, dating, prayer, and marriage.</h2>
             </div>
             <Link className="text-link" href="/blog">
               Read the blog <ArrowRight aria-hidden="true" />
@@ -327,8 +325,8 @@ export default function HomePage() {
 
         <section className="faq-section section-shell">
           <div className="section-heading">
-            <p className="section-kicker">A few plain answers</p>
-            <h2 className="section-title">Before you join the waitlist.</h2>
+            <p className="section-kicker">Questions and answers</p>
+            <h2 className="section-title">What to know about Bexhearts.</h2>
           </div>
           <div className="faq-list">
             {faqs.map((faq) => (
@@ -342,8 +340,8 @@ export default function HomePage() {
 
         <section className="final-cta section-shell">
           <div>
-            <p className="section-kicker">Join before launch</p>
-            <h2 className="section-title">Be there when the first couples get access.</h2>
+            <p className="section-kicker">App Store review in progress</p>
+            <h2 className="section-title">Get the download link as soon as Apple approves it.</h2>
           </div>
           <WaitlistForm compact />
         </section>
@@ -363,4 +361,3 @@ export default function HomePage() {
     </>
   );
 }
-

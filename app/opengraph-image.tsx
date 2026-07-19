@@ -61,11 +61,10 @@ export default function Image() {
             maxWidth: 830,
           }}
         >
-          A faith-forward app for Christian couples building shared rhythms.
+          Daily devotionals, shared prayer, check-ins, dates, and your story together.
         </div>
       </div>
     ),
     size,
   );
 }
-

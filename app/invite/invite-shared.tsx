@@ -60,10 +60,10 @@ export function InviteSteps() {
         </div>
       ) : (
         <p className="microcopy" style={{ marginTop: '1.5rem' }}>
-          Bexhearts is in early access, so the public store listing isn&apos;t live yet. If your
-          partner sent you this, they can also send you their test invite — or{' '}
-          <Link href="/#waitlist">join the waitlist</Link> and we&apos;ll email you the download
-          link at launch.
+          The iPhone app is awaiting App Store approval. If your partner already has access, ask
+          them for the current installation instructions — or{' '}
+          <Link href="/#waitlist">join the waitlist</Link> and we&apos;ll email you as soon as the
+          approved download link is live.
         </p>
       )}
     </>

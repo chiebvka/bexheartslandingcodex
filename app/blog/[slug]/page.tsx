@@ -45,6 +45,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const relatedPosts = [
+    ...blogPosts.filter((candidate) => candidate.slug !== post.slug && candidate.category === post.category),
+    ...blogPosts.filter((candidate) => candidate.slug !== post.slug && candidate.category !== post.category),
+  ].slice(0, 3);
+
   const articleUrl = `${siteConfig.url.replace(/\/$/, '')}/blog/${post.slug}`;
   const structuredData = {
     '@context': 'https://schema.org',
@@ -99,9 +104,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ))}
         </div>
 
+        <aside className="related-guides" aria-labelledby="related-guides-title">
+          <p className="section-kicker">Keep reading</p>
+          <h2 id="related-guides-title">More Christian relationship guides</h2>
+          <div className="blog-grid">
+            {relatedPosts.map((relatedPost) => (
+              <Link href={`/blog/${relatedPost.slug}`} className="blog-card" key={relatedPost.slug}>
+                <span>{relatedPost.category}</span>
+                <h3>{relatedPost.title}</h3>
+                <p>{relatedPost.description}</p>
+              </Link>
+            ))}
+          </div>
+        </aside>
+
         <aside className="article-cta">
-          <h2>Join the Bexhearts waitlist</h2>
-          <p>Get early access updates for the Christian couples app being built around shared rhythms.</p>
+          <h2>Get Bexhearts when the App Store approves it</h2>
+          <p>Join the waitlist and we will email you the iPhone download link as soon as it is live.</p>
           <WaitlistForm compact />
         </aside>
       </article>

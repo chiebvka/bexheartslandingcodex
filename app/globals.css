@@ -910,6 +910,17 @@ select {
   line-height: 1.5;
 }
 
+.related-guides {
+  margin-top: 54px;
+}
+
+.related-guides > h2 {
+  margin: 0 0 20px;
+  font-family: Georgia, ui-serif, serif;
+  font-size: 32px;
+  line-height: 1.12;
+}
+
 .support-card {
   max-width: 640px;
 }

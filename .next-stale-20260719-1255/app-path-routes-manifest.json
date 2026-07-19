@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/llms.txt/route": "/llms.txt",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/api/waitlist/route": "/api/waitlist",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/blog/page": "/blog",
+  "/invite/page": "/invite",
+  "/invite/[code]/page": "/invite/[code]",
+  "/blog/[slug]/page": "/blog/[slug]",
+  "/how-it-works/page": "/how-it-works",
+  "/support/page": "/support",
+  "/terms/page": "/terms",
+  "/privacy/page": "/privacy"
+}

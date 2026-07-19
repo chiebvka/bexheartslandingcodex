@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         ok: true,
         created: false,
-        message: "You're already on the waitlist. I'll send launch updates there.",
+        message: "You're already on the waitlist. I'll send the approved download link there.",
       });
     }
 
@@ -102,6 +102,6 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({
     ok: true,
     created: true,
-    message: "You're on the list. I'll send early access when Bexhearts is ready.",
+    message: "You're on the list. I'll send the download link as soon as App Store approval is complete.",
   });
 }

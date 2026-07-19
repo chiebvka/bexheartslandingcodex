@@ -24,7 +24,7 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
   const successText = useMemo(
     () =>
       message ||
-      "You're on the list. I'll send early access when Bexhearts is ready for first couples.",
+      "You're on the list. I'll send the download link as soon as App Store approval is complete.",
     [message],
   );
 

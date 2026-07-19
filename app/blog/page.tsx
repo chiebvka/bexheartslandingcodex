@@ -6,7 +6,7 @@ import { blogPosts } from '@/lib/blog/posts';
 export const metadata: Metadata = {
   title: 'Christian Relationship Guides',
   description:
-    'Practical guides for Christian couples on prayer, dating boundaries, premarital questions, faith-centered dates, and shared rhythms.',
+    'Practical guides for Christian couples on prayer, dating boundaries, premarital questions, faith-centered dates, conflict, and weekly check-ins.',
   alternates: {
     canonical: '/blog',
   },
@@ -22,10 +22,10 @@ export default function BlogPage() {
         </Link>
         <header className="article-hero">
           <p className="section-kicker">Bexhearts Blog</p>
-          <h1>Christian relationship guides for couples building better rhythms.</h1>
+          <h1>Christian relationship guides for stronger faith and honest conversations.</h1>
           <p>
-            Search-ready, practical writing for dating, engaged, and newlywed couples. No fake
-            certainty, no shame-heavy advice, and no claims that an app replaces real support.
+            Practical guidance for dating, engaged, and newlywed couples who want prayer, honest
+            conversations, and wise boundaries to have a real place in their relationship.
           </p>
         </header>
         <div className="blog-index">
@@ -44,4 +44,3 @@ export default function BlogPage() {
     </main>
   );
 }
-

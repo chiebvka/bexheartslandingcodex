@@ -3,7 +3,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://bexhearts.com',
   email: 'support@bexhearts.com',
   description:
-    'A faith-forward app for Christian couples building a shared rhythm of devotionals, prayer, check-ins, intentional dates, and remembered moments.',
+    'A Christian couples app for daily devotionals, shared prayer, weekly check-ins, intentional dates, and a private couple journal.',
   keywords: [
     'Christian couples app',
     'couples devotional app',
@@ -30,41 +30,40 @@ export const appLinks = {
 export const stageCards = [
   {
     label: 'Dating',
-    title: 'Build rhythms before pressure does.',
-    copy: 'Pray together, talk through boundaries, and make faith a normal part of your relationship.',
+    title: 'Put faith at the center from the start.',
+    copy: 'Pray together, agree on healthy boundaries, and make honest spiritual conversations normal.',
   },
   {
     label: 'Engaged',
-    title: 'Prepare for more than the wedding.',
-    copy: 'Use devotionals, check-ins, and intentional questions to build a shared foundation.',
+    title: 'Prepare for the marriage, not only the wedding.',
+    copy: 'Use devotionals, weekly check-ins, and direct questions to strengthen your foundation.',
   },
   {
     label: 'Newlywed',
-    title: 'Keep choosing the small faithful habits.',
-    copy: 'Make prayer, weekly reflection, and shared memories part of your first years together.',
+    title: 'Protect connection as you build a life together.',
+    copy: 'Keep prayer, weekly reflection, dates, and shared memories close in your first years.',
   },
 ];
 
 export const productRhythm = [
   {
     step: '01',
-    title: 'Read together',
-    copy: 'Daily scripture, reflection, and a small couple action.',
+    title: 'Read the daily devotional',
+    copy: 'One passage, a short reflection, and a practical action for the two of you.',
   },
   {
     step: '02',
-    title: 'Pray together',
-    copy: 'Shared and personal prayers, including answered-prayer moments.',
+    title: 'Keep your prayers together',
+    copy: 'Save shared and personal prayers, then mark the ones God answers.',
   },
   {
     step: '03',
-    title: 'Check in gently',
-    copy: 'Weekly emotional, spiritual, and communication reflections.',
+    title: 'Check in every week',
+    copy: 'Talk clearly about emotional connection, faith, and communication.',
   },
   {
     step: '04',
-    title: 'Remember the story',
-    copy: 'Dates, milestones, and moments collected in one couple space.',
+    title: 'Keep the moments that matter',
+    copy: 'Save completed dates, milestones, photos, and answered prayers in one place.',
   },
 ];
-

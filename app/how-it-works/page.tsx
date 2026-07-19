@@ -149,11 +149,10 @@ export default function HowItWorksPage() {
             <Gift aria-hidden="true" style={{ width: 16, height: 16, verticalAlign: '-2px' }} />{' '}
             Rewards
           </p>
-          <h2 className="section-title">Points are building toward something real.</h2>
+          <h2 className="section-title">Points track progress today. Rewards come later.</h2>
           <p className="section-copy">
-            We&apos;re honest about this part: couple rewards are planned but not live yet, and we
-            won&apos;t promise specifics until they are. In the meantime your points climb an
-            optional leaderboard where couples appear masked (something like &quot;t**y &amp;
+            Couple rewards are not currently offered, so points have no cash or prize value. Your
+            points can place you on an optional leaderboard where couples appear masked (something like &quot;t**y &amp;
             b****i · #1042&quot;) unless you choose to show your names. Your stars on date ideas
             also help every other couple: they roll up into the library&apos;s community ratings,
             so the best ideas rise to the top.

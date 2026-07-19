@@ -26,7 +26,7 @@ Bexhearts is a mobile app for Christian couples — dating, engaged, newlywed, a
 Billed per couple — one partner subscribes and the linked partner joins the same couple space at no extra cost. Plans: $6.99/week, $12.99/month, or $79.99/year (about $1.54/week for both people). Every plan starts with a 3-day free trial; payment is handled by the Apple App Store or Google Play.
 
 ## Audience
-Christian dating, engaged, newlywed, and married couples who want faith-centered shared rhythms. The first audience is the dating-to-newlywed journey.
+Christian dating, engaged, newlywed, and married couples who want to pray together, communicate honestly, plan meaningful dates, and keep a private record of their relationship.
 
 ## Privacy Highlights
 Personal prayers are visible only to their author (enforced at the database level). Weekly check-in notes reveal only after both partners submit, with per-field sharing toggles. Prayer and journal content is never sold, never used for advertising, and never used for AI model training. Account deletion has a 7-day grace period and is non-destructive to the remaining partner.
