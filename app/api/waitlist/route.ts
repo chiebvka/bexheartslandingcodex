@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import { getWaitlistClient, type WaitlistInsert } from '@/lib/supabase/waitlist';
+import { sanitizeAttribution } from '@/lib/analytics/attribution';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const allowedStages = new Set(['dating', 'engaged', 'newlywed', 'married', '']);
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (clean(body.company)) {
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, created: false });
   }
 
   const email = clean(body.email).toLowerCase();
@@ -71,18 +72,14 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const attribution = sanitizeAttribution(body);
+
   const signup: WaitlistInsert = {
     email,
     name: clean(body.name) || null,
     stage: stage || null,
-    source: clean(body.source) || null,
-    referrer: clean(body.referrer) || null,
-    utm_source: clean(body.utm_source) || null,
-    utm_medium: clean(body.utm_medium) || null,
-    utm_campaign: clean(body.utm_campaign) || null,
-    utm_content: clean(body.utm_content) || null,
-    utm_term: clean(body.utm_term) || null,
-    user_agent: request.headers.get('user-agent'),
+    ...attribution,
+    user_agent: request.headers.get('user-agent')?.slice(0, 500) || null,
   };
 
   const { error } = await supabase.from('waitlist_signups').insert(signup);
@@ -91,6 +88,7 @@ export async function POST(request: NextRequest) {
     if (error.code === '23505') {
       return NextResponse.json({
         ok: true,
+        created: false,
         message: "You're already on the waitlist. I'll send launch updates there.",
       });
     }
@@ -103,7 +101,7 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({
     ok: true,
+    created: true,
     message: "You're on the list. I'll send early access when Bexhearts is ready.",
   });
 }
-

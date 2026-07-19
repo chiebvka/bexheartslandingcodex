@@ -117,17 +117,32 @@ export default function PrivacyPage() {
               subscription status and pseudonymous transaction identifiers — never your card number.
               Billing is per couple.
             </p>
-            <h3>Analytics and diagnostics</h3>
+            <h3>Mobile app analytics and diagnostics</h3>
             <p>
               We use PostHog for product analytics and Superwall for paywall display. We purge
               identity from these SDKs when you sign out or delete your account. Device data
               includes your push token (when notifications ship), device timezone, and app version.
             </p>
+            <h3>Website analytics</h3>
+            <p>
+              This website uses DataFast in cookieless mode to count visits and understand which
+              campaigns lead to waitlist activity. This mode does not use a long-lived visitor
+              cookie, but may use session-only browser storage and a rotating pseudonymous visitor
+              identifier derived from technical signals such as IP address, browser user agent,
+              site domain, and a rotating salt. If you select &ldquo;Allow analytics&rdquo; in the website
+              privacy choices, Google Analytics 4 also uses analytics cookies to measure visits and
+              waitlist activity. Google advertising storage, signals, and ad personalization are
+              disabled. You can change your choice at any time with the &ldquo;Privacy choices&rdquo;
+              button. We do not send your name or email address to DataFast or Google Analytics.
+            </p>
             <h3>Website waitlist</h3>
             <p>
               If you join the waitlist on this site, we collect your email address, optional name
-              and relationship stage, referral source, campaign fields, user agent, and submission
-              time — used only to send launch and early-access updates you requested.
+              and relationship stage, the external referring website&rsquo;s hostname, campaign
+              fields, the first landing path and visit time for that browsing session, user agent,
+              and submission time. We use this information to send the launch and early-access
+              updates you requested and to understand which outreach brings people to Bexhearts.
+              The waitlist does not store your IP address.
             </p>
           </section>
 
@@ -154,10 +169,11 @@ export default function PrivacyPage() {
               Your partner: shared spaces are shared — see section 2; unlinking and deletion effects
               are in section 6. Processors: Supabase (database, auth, and storage backend),
               Cloudflare (photo storage), Anthropic (AI prayer composition, consent-gated),
-              RevenueCat (subscriptions), Superwall (paywalls), PostHog (analytics), and Apple and
-              Google (sign-in, payments, push). Each receives only what its function requires. We
-              disclose data where required by law, or to protect users from imminent harm. There are
-              no third-party advertising SDKs.
+              RevenueCat (subscriptions), Superwall (paywalls), and Apple and
+              Google (sign-in, payments, push, and consent-gated website analytics), DataFast
+              (cookieless website analytics), and PostHog (mobile product analytics). Each receives
+              only what its function requires. We disclose data where required by law, or to protect
+              users from imminent harm. There are no third-party advertising SDKs.
             </p>
           </section>
 

@@ -1,7 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { AlertCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
+import {
+  captureFirstTouchAttribution,
+  type FirstTouchAttribution,
+} from '@/lib/analytics/attribution';
+import { trackWaitlistFormEngaged, trackWaitlistSignup } from '@/lib/analytics/client';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
@@ -15,20 +20,6 @@ const stages = [
 export function WaitlistForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<Status>('idle');
   const [message, setMessage] = useState('');
-  const [source, setSource] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setSource({
-      source: document.referrer ? 'referral' : 'direct',
-      referrer: document.referrer,
-      utm_source: params.get('utm_source') || '',
-      utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || '',
-      utm_content: params.get('utm_content') || '',
-      utm_term: params.get('utm_term') || '',
-    });
-  }, []);
 
   const successText = useMemo(
     () =>
@@ -37,6 +28,14 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
     [message],
   );
 
+  function onFormEngaged() {
+    try {
+      trackWaitlistFormEngaged(captureFirstTouchAttribution());
+    } catch {
+      // Analytics and storage failures must not affect the form.
+    }
+  }
+
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formElement = event.currentTarget;
@@ -44,12 +43,20 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
     setMessage('');
 
     const form = new FormData(formElement);
+    let attribution: FirstTouchAttribution | null = null;
+
+    try {
+      attribution = captureFirstTouchAttribution();
+    } catch {
+      // The API safely fills missing attribution when the browser blocks it.
+    }
+
     const payload = {
       email: String(form.get('email') || '').trim(),
       name: String(form.get('name') || '').trim(),
       stage: String(form.get('stage') || '').trim(),
       company: String(form.get('company') || '').trim(),
-      ...source,
+      ...(attribution || {}),
     };
 
     try {
@@ -58,7 +65,7 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const data = (await response.json()) as { ok?: boolean; message?: string };
+      const data = (await response.json()) as { ok?: boolean; created?: boolean; message?: string };
 
       if (!response.ok || !data.ok) {
         throw new Error(data.message || 'Something went wrong. Please try again.');
@@ -67,6 +74,14 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
       setStatus('success');
       setMessage(data.message || '');
       formElement.reset();
+
+      if (data.created && attribution) {
+        try {
+          trackWaitlistSignup(attribution);
+        } catch {
+          // A conversion beacon can fail without changing the confirmed signup.
+        }
+      }
     } catch (error) {
       setStatus('error');
       setMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
@@ -87,7 +102,11 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <form className={compact ? 'waitlist-form compact' : 'waitlist-form'} onSubmit={onSubmit}>
+    <form
+      className={compact ? 'waitlist-form compact' : 'waitlist-form'}
+      onSubmit={onSubmit}
+      onFocusCapture={onFormEngaged}
+    >
       <input
         className="visually-hidden"
         type="text"
@@ -138,4 +157,3 @@ export function WaitlistForm({ compact = false }: { compact?: boolean }) {
     </form>
   );
 }
-

@@ -11,6 +11,8 @@ type WaitlistInsert = {
   utm_campaign?: string | null;
   utm_content?: string | null;
   utm_term?: string | null;
+  landing_path?: string | null;
+  first_visited_at?: string | null;
   user_agent?: string | null;
 };
 

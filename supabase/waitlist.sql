@@ -10,6 +10,8 @@ create table if not exists public.waitlist_signups (
   utm_campaign text,
   utm_content text,
   utm_term text,
+  landing_path text,
+  first_visited_at timestamptz,
   user_agent text,
   created_at timestamptz not null default now(),
   unique (email)

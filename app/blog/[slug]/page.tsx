@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { getPost, blogPosts } from '@/lib/blog/posts';
 import { WaitlistForm } from '@/components/WaitlistForm';
+import { siteConfig } from '@/lib/site';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -44,8 +45,34 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const articleUrl = `${siteConfig.url.replace(/\/$/, '')}/blog/${post.slug}`;
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishedAt,
+    mainEntityOfPage: articleUrl,
+    author: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+
   return (
     <main className="article-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
       <article className="article-shell">
         <Link href="/blog" className="back-link">
           <ArrowLeft aria-hidden="true" />
